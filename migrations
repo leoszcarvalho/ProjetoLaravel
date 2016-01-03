@@ -1,0 +1,71 @@
+C:\xampp\htdocs\laravel\projeto>php artisan make:migration create_todo_list_table --create=todo_list
+Created Migration: 2015_12_29_221027_create_todo_list_table
+
+C:\xampp\htdocs\laravel\projeto>php artisan migrate
+Migration table created successfully.
+
+
+  [Illuminate\Database\QueryException]
+  SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'todo_list' already exists (SQL: create table `todo_list` (`id` int unsigned not null auto_increment primary key, `name` varchar(255) not null, `created_at` timestamp default 0 not null, `updat
+  ed_at` timestamp default 0 not null) default character set utf8 collate utf8_unicode_ci)
+
+
+
+  [PDOException]
+  SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'todo_list' already exists
+
+
+
+C:\xampp\htdocs\laravel\projeto>php artisan migrate
+Migrated: 2015_12_29_221027_create_todo_list_table
+
+C:\xampp\htdocs\laravel\projeto>php artisan migrate:rollback
+Rolled back: 2015_12_29_221027_create_todo_list_table
+
+C:\xampp\htdocs\laravel\projeto>php artisan migrate
+
+
+  [Illuminate\Database\QueryException]
+  SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'kids' already exists (SQL: create table `kids` (`id` int unsigned not null auto_increment primary key, `name` varchar(255) not null, `created_at` timestamp default 0 not null, `updated_at` tim
+  estamp default 0 not null) default character set utf8 collate utf8_unicode_ci)
+
+
+
+  [PDOException]
+  SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'kids' already exists
+
+
+
+C:\xampp\htdocs\laravel\projeto>php artisan migrate
+
+
+  [Illuminate\Database\QueryException]
+  SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'kids' already exists (SQL: create table `kids` (`id` int unsigned not null auto_increment primary key, `name` varchar(255) not null, `created_at` timestamp default 0 not null, `updated_at` tim
+  estamp default 0 not null) default character set utf8 collate utf8_unicode_ci)
+
+
+
+  [PDOException]
+  SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'kids' already exists
+
+
+
+C:\xampp\htdocs\laravel\projeto>php artisan migrate:rollback
+Rolled back: 2014_10_12_100000_create_password_resets_table
+Rolled back: 2014_10_12_000000_create_users_table
+
+C:\xampp\htdocs\laravel\projeto>php artisan migrate:rollback
+Nothing to rollback.
+
+C:\xampp\htdocs\laravel\projeto>php artisan migrate
+Migrated: 2014_10_12_000000_create_users_table
+Migrated: 2014_10_12_100000_create_password_resets_table
+Migrated: 2015_12_29_221027_create_todo_list_table
+
+C:\xampp\htdocs\laravel\projeto>php artisan migrate:rollback
+Rolled back: 2015_12_29_221027_create_todo_list_table
+Rolled back: 2014_10_12_100000_create_password_resets_table
+Rolled back: 2014_10_12_000000_create_users_table
+
+C:\xampp\htdocs\laravel\projeto>php artisan migrate:rollback
+Nothing to rollback.

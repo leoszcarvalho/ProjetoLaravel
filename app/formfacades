@@ -1,0 +1,8 @@
+* Primeiro adicionar dependência illuminate/html
+* Depois registrar no config/app o provider
+        Illuminate\Html\HtmlServiceProvider::class,
+
+* E por último registrar os alias
+
+          'Form'      => Illuminate\Html\FormFacade::class,
+          'Html'      => Illuminate\Html\HtmlFacade::class,
