@@ -37,7 +37,7 @@ class TodoListController extends Controller
      */
     public function create()
     {
-        return view('todos.create');
+        return view('todos.create')->withButtonText('Create');
     }
 
     /**
@@ -56,12 +56,12 @@ class TodoListController extends Controller
 
         /*Jeito 1 mais atual
         $input = $request->all();
-        echo $input['title'];
+        echo $input['name'];
         */
 
         /*Jeito 2 mais antigo
         $input = \Input::all();
-        echo $input['title'];
+        echo $input['name'];
          */
 
         //All retorna um array com todos os posts, get retorna um especifico
@@ -70,7 +70,7 @@ class TodoListController extends Controller
         //Validação do form
 
         $rules = array(
-            'title' => array(
+            'name' => array(
                 'required', 'unique:todo_list,name'
             )
         );
@@ -92,7 +92,7 @@ class TodoListController extends Controller
 
         }
 
-        $name = \Input::get('title');
+        $name = \Input::get('name');
         $list = new TodoList();
         $list->name = $name;
         $list->save();
@@ -122,8 +122,8 @@ class TodoListController extends Controller
      */
     public function edit($id)
     {
-        //
-        return \View::make('todos.edit');
+        $list = TodoList::findOrFail($id);
+        return \View::make('todos.edit')->withList($list)->withButtonText('Update');
     }
 
     /**
@@ -135,7 +135,27 @@ class TodoListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array(
+            'name' => array(
+                'required', 'unique:todo_list'
+            )
+        );
+
+        $validator = \Validator::make(Input::all(), $rules);
+
+        //Testa a validade dos inputs
+        if($validator->fails())
+        {
+
+            return Redirect::route('todos.edit', $id)->withErrors($validator)->withInput();
+
+        }
+
+        $name = \Input::get('name');
+        $list = TodoList::findOrFail($id);
+        $list->name = $name;
+        $list->update();
+        return Redirect::route('todos.index')->withMessage('List was Updated');
     }
 
     /**
@@ -146,6 +166,7 @@ class TodoListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $todo_list = TodoList::findOrFail($id)->delete();
+        return Redirect::route('todos.index')->withMessage('Item Deleted!');
     }
 }

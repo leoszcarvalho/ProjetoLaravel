@@ -2,33 +2,12 @@
 @section('content')
 
 
-    <ul>
 
+<!--Pra usar a form ver arquivo formfacades -->
+{!! Form::model($list, array('method' => 'PUT', 'route' => ['todos.update', $list->id]) ) !!}
 
-        <?php
+@include('todos.partials._form')
 
-        //echo $todo_list[0]->name;
-
-        foreach($todo_list as $list)
-        {
-    ?>
-
-        <li>{!!   link_to_route('todos.show', $list->name, [$list->id]) !!} - {!!  link_to_route('todos.edit', 'Edit', [$list->id])  !!}</li>
-    <?php
-        }
-        ?>
-
-
-        {{--Em blade
-        @foreach($todo_list as $list)
-
-            <li>{{{ $list->name }}}</li>
-
-        @endforeach--}}
-
-
-    </ul>
-
-    <p>{!! link_to_route('todos.create', 'create', null, ['class' => 'success button']) !!}</p>
+{!!  Form::close()  !!}
 
 @stop

@@ -13,13 +13,7 @@
     <!--Pra usar a form ver arquivo formfacades -->
     {!! Form::open( array('route' => 'todos.store') ) !!}
 
-    {!!  Form::label('title','This is the form title')  !!}
-    {!!  Form::text('title')  !!}
-
-    {{--Validação do campo title usa apenas  bracket com duas exclamações para que o html n seja substituido --}}
-    {!!   $errors->first("title","<p class='error'>:message</p>") !!}
-
-    {!!  Form::submit('Submit Button', array('class' => 'button', "style" => "margin-left:5px;")) !!}
+        @include('todos.partials._form')
 
     {!!  Form::close()  !!}
 
